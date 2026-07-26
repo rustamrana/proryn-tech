@@ -121,6 +121,17 @@ const TEAM_MEMBERS: TeamMember[] = [
     accentColor: 'text-sky-600',
     accentBg: 'bg-sky-50',
   },
+  {
+    id: 'priya-sahare',
+    name: 'Priya Sahare',
+    role: 'Business Operations Manager',
+    department: 'Operations',
+    bio: 'Leads HR, recruitment, administration, and business operations while ensuring seamless collaboration across teams and efficient organizational growth.',
+    photoFile: 'https://ui-avatars.com/api/?name=Priya+Sahare&background=ffe4e6&color=e11d48&size=400&font-size=0.38&bold=true',
+    accentColor: 'text-rose-600',
+    accentBg: 'bg-rose-50',
+    objectPosition: 'center',
+  },
 ];
 
 // ─── Team Member Card ─────────────────────────────────────────────────────────
@@ -603,7 +614,7 @@ export default function AboutPage() {
           </motion.div>
 
           {/* 6-card grid: 1 col mobile → 2 col tablet → 3 col lg → 6 col xl */}
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {TEAM_MEMBERS.map((member, i) => (
               <TeamMemberCard key={member.id} member={member} index={i} />
             ))}
