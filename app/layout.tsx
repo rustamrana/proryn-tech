@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import ChatbotLoader from "@/components/chatbot/ChatbotLoader";
 import AnalyticsLoader from "@/components/providers/AnalyticsLoader";
 import { WebVitalsReporter } from "./web-vitals";
+import ScrollToTop from "@/components/common/ScrollToTop";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -131,6 +132,7 @@ export default function RootLayout({
             <main id="main-content">{children}</main>
             <Footer />
             <ChatbotLoader />
+            <ScrollToTop />
           </AnalyticsLoader>
         </ThemeProvider>
       </body>

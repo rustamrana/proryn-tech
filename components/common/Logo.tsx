@@ -1,12 +1,8 @@
 /**
  * PRORYN TECH Logo Components
  *
- * LogoWithText — text-only wordmark with accent dot (used in Navbar)
- *
- * To add the real logo image later:
- *   1. Place your logo file at /public/logo.png or /public/logo.svg
- *   2. Replace the text mark below with:
- *      <Image src="/logo.png" alt="PRORYN TECH" width={120} height={36} priority />
+ * Text-only branding. No images, no icons, no SVG.
+ * Just the company name + tagline with proper typography.
  */
 
 interface LogoWithTextProps {
@@ -17,37 +13,37 @@ export function LogoWithText({ scrolled }: LogoWithTextProps) {
   const prorynColor = scrolled ? '#0F172A' : '#FFFFFF';
 
   return (
-    <span className="flex items-center">
-      <span
-        className="font-poppins font-black leading-none tracking-tight"
-        style={{ fontSize: '1.35rem', color: prorynColor, letterSpacing: '-0.01em' }}
-      >
-        PRORYN
+    <span
+      className="flex flex-col justify-center items-start shrink-0 whitespace-nowrap"
+      style={{ maxWidth: '280px' }}
+    >
+      {/* Company name */}
+      <span className="flex items-baseline gap-0">
+        <span
+          className="font-inter leading-none"
+          style={{ fontWeight: 800, fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', color: prorynColor, letterSpacing: '-0.03em' }}
+        >
+          PRORYN
+        </span>
+        <span
+          className="font-inter leading-none"
+          style={{ fontWeight: 800, fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', color: '#2563EB', letterSpacing: '-0.03em' }}
+        >
+          &nbsp;TECH
+        </span>
       </span>
+      {/* Tagline — hidden on mobile */}
       <span
-        className="font-poppins font-black leading-none tracking-tight"
-        style={{ fontSize: '1.35rem', color: '#2563EB', letterSpacing: '-0.01em' }}
+        className="hidden sm:block"
+        style={{ fontFamily: 'var(--font-inter), sans-serif', fontStyle: 'normal', fontSize: '11px', fontWeight: 500, letterSpacing: '0.06em', marginTop: '6px', color: '#94A3B8' }}
       >
-        &nbsp;TECH
+        Engineering Intelligent Solutions
       </span>
     </span>
   );
 }
 
-// Keep ProrynIcon exported as null-render to avoid import errors in loading/transition files
-export function ProrynIcon({ className = 'h-9 w-7', color = '#06B6D4' }: { className?: string; color?: string }) {
-  // Plain circle placeholder — replace with real logo image when available
-  return (
-    <span
-      className={`inline-flex items-center justify-center rounded-lg bg-brand-accent/20 ${className}`}
-      aria-hidden="true"
-    >
-      <span
-        className="font-poppins font-extrabold text-brand-accent"
-        style={{ fontSize: '0.75rem', color }}
-      >
-        P
-      </span>
-    </span>
-  );
+// Keep ProrynIcon exported to avoid import errors elsewhere
+export function ProrynIcon({ className = 'h-9 w-7' }: { className?: string; color?: string }) {
+  return <span className={className} aria-hidden="true" />;
 }

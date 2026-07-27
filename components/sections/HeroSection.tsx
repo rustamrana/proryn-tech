@@ -72,8 +72,8 @@ export default function HeroSection() {
 
             {/* H1 */}
             <motion.h1
-              className="mt-6 font-poppins font-extrabold leading-[1.08] tracking-tight text-white"
-              style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)' }}
+              className="mt-6 max-w-[650px] font-poppins font-black leading-[0.92] tracking-tight text-white"
+              style={{ fontSize: 'clamp(2.6rem, 6vw, 4.8rem)' }}
               variants={fadeUp(0.1)}
               initial="hidden"
               animate="visible"

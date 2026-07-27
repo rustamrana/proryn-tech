@@ -79,7 +79,7 @@ export default function DashboardMockup({ className }: DashboardMockupProps) {
       />
 
       {/* Browser chrome */}
-      <div className="relative overflow-hidden rounded-2xl shadow-[0_32px_80px_rgba(15,23,42,0.45)]">
+      <div className="relative overflow-hidden rounded-3xl shadow-[0_32px_80px_rgba(15,23,42,0.45)]">
         {/* Title bar */}
         <div className="flex h-9 items-center gap-2 bg-[#1E293B] px-4">
           <span className="h-3 w-3 rounded-full bg-[#FF5F57]" />
@@ -175,7 +175,7 @@ export default function DashboardMockup({ className }: DashboardMockupProps) {
       {/* Floating card — top right */}
       <motion.div
         animate={{ y: [0, -8, 0] }}
-        transition={{ duration: 3.5, repeat: Infinity, ease: [0.45, 0, 0.55, 1] }}
+        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute -right-6 -top-6 z-10 flex items-center gap-2.5 rounded-2xl backdrop-blur-md bg-white/80 border border-white/30 px-4 py-3 shadow-card-hover"
         aria-hidden="true"
       >
@@ -191,7 +191,7 @@ export default function DashboardMockup({ className }: DashboardMockupProps) {
       {/* Floating card — bottom left */}
       <motion.div
         animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: [0.45, 0, 0.55, 1], delay: 1 }}
+        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
         className="absolute -bottom-6 -left-6 z-10 flex items-center gap-2.5 rounded-2xl backdrop-blur-md bg-white/80 border border-white/30 px-4 py-3 shadow-card-hover"
         aria-hidden="true"
       >

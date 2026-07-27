@@ -169,7 +169,7 @@ export default function Navbar() {
   const closeMobile = useCallback(() => setMobileOpen(false), []);
 
   const navbarBg = isScrolled
-    ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-brand-border'
+    ? 'bg-white/[0.92] backdrop-blur-[12px] shadow-[0_8px_30px_rgba(15,23,42,0.08)] border-b border-brand-border'
     : 'bg-transparent';
 
   return (
@@ -182,7 +182,7 @@ export default function Navbar() {
 
       {/* Navbar */}
       <header className={`fixed top-0 z-50 w-full transition-all duration-300 ${navbarBg}`}>
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-[88px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
           {/* Logo */}
           <Link href="/" prefetch={true} aria-label="PRORYN TECH – homepage"
@@ -251,7 +251,7 @@ export default function Navbar() {
             animate="animate"
             exit="exit"
             transition={mobileMenuTransition}
-            className="fixed inset-x-0 top-16 z-50 flex h-[calc(100vh-4rem)] flex-col overflow-y-auto bg-white lg:hidden">
+            className="fixed inset-x-0 top-[88px] z-50 flex h-[calc(100vh-88px)] flex-col overflow-y-auto bg-white lg:hidden">
 
             <nav aria-label="Mobile navigation" className="flex-1 px-4 py-4">
               <ul className="space-y-0.5">
