@@ -8,7 +8,7 @@ import {
 import { jobListings, companyBenefits } from '@/lib/data/careers';
 import PageHero from '@/components/common/PageHero';
 
-const BENEFIT_ICONS: Record<string, React.ElementType> = {
+const BENEFIT_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   BadgeIndianRupee: BadgeDollarSign,
   Clock,
   BookOpen,

@@ -130,4 +130,4 @@ export const BRAND = {
 
 // ─── Copyright ────────────────────────────────────────────────────────────────
 
-export const COPYRIGHT = `© 2026 ${COMPANY_NAME}. All Rights Reserved.`;
+export const COPYRIGHT = `© ${new Date().getFullYear()} ${COMPANY_NAME}. All Rights Reserved.`;

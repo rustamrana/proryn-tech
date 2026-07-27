@@ -9,7 +9,7 @@ import { blogPosts } from '@/lib/data/blog-posts';
 
 const CATEGORIES = ['All', ...Array.from(new Set(blogPosts.map((p) => p.category)))];
 
-const CATEGORY_META: Record<string, { icon: React.ElementType; color: string; bg: string; count: number }> = {
+const CATEGORY_META: Record<string, { icon: React.ComponentType<{ className?: string }>; color: string; bg: string; count: number }> = {
   'Artificial Intelligence': { icon: Cpu,       color: 'text-violet-600', bg: 'bg-violet-50',  count: 1 },
   'Software Engineering':    { icon: BookOpen,  color: 'text-blue-600',   bg: 'bg-blue-50',    count: 1 },
   'Cloud':                   { icon: Cloud,     color: 'text-sky-600',    bg: 'bg-sky-50',     count: 1 },
@@ -66,7 +66,7 @@ export default function BlogsPage() {
           {/* ── Category stats strip ── */}
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.12 }}
             className="mb-10 hidden grid-cols-6 gap-3 lg:grid">
-            {Object.entries(CATEGORY_META).map(([cat, meta]) => {
+            {(Object.entries(CATEGORY_META) as [string, { icon: React.ComponentType<{ className?: string }>; color: string; bg: string; count: number }][]).map(([cat, meta]) => {
               const Icon = meta.icon;
               return (
                 <button key={cat} onClick={() => setActive(cat === active ? 'All' : cat)}

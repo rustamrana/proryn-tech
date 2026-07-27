@@ -18,6 +18,13 @@ const config: Config = {
           background: "#F8FAFC",
           card: "#FFFFFF",
           border: "#E2E8F0",
+          dark: {
+            background: "#0F172A",
+            card: "#1E293B",
+            border: "#334155",
+            text: "#F1F5F9",
+            muted: "#94A3B8",
+          },
         },
       },
       fontFamily: {

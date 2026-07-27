@@ -11,7 +11,7 @@ import {
   Linkedin, Twitter, Clock, MessageSquare, Headphones,
 } from 'lucide-react';
 import { services } from '@/lib/data/services';
-import { EMAIL, WEBSITE, FULL_ADDRESS, SOCIAL_LINKS } from '@/lib/constants';
+import { EMAIL, WEBSITE, FULL_ADDRESS, PHONE, SOCIAL_LINKS } from '@/lib/constants';
 
 // ── Schema ───────────────────────────────────────────────────────────────────
 const contactSchema = z.object({
@@ -128,7 +128,7 @@ function ContactForm() {
 
 // ── Contact Channel Card ──────────────────────────────────────────────────────
 function ChannelCard({ icon: Icon, label, value, href, accent }: {
-  icon: React.ElementType; label: string; value: string; href: string; accent: string;
+  icon: React.ComponentType<{ className?: string }>; label: string; value: string; href: string; accent: string;
 }) {
   return (
     <a href={href} className={`group flex items-center gap-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-card transition-all hover:shadow-card-hover hover:border-${accent}-200`}>
@@ -204,7 +204,7 @@ export default function ContactPage() {
                   <ChannelCard icon={Mail} label="Email" value={EMAIL.support} href={`mailto:${EMAIL.support}`} accent="blue" />
                   <ChannelCard icon={Headphones} label="Support" value={EMAIL.support} href={`mailto:${EMAIL.support}`} accent="emerald" />
                   <ChannelCard icon={MapPin} label="Office" value={FULL_ADDRESS} href="https://maps.google.com/?q=Bhopal+Madhya+Pradesh+India" accent="amber" />
-                  <ChannelCard icon={Phone} label="Phone" value="+91 755 000 0000" href="tel:+917550000000" accent="violet" />
+                  <ChannelCard icon={Phone} label="Phone" value={PHONE} href={`tel:${PHONE.replace(/\s/g, '')}`} accent="violet" />
                   <ChannelCard icon={Globe} label="Website" value={WEBSITE.replace('https://', '')} href={WEBSITE} accent="cyan" />
                 </div>
               </div>

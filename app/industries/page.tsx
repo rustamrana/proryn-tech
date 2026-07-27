@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://proryntech.com/industries' },
 };
 
-const ICON_MAP: Record<string, React.ElementType> = {
+const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   Factory, Heart, GraduationCap, Landmark, HardHat,
   ShoppingBag, DollarSign, Hotel, Home, Truck,
 };

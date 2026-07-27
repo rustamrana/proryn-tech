@@ -69,11 +69,12 @@ function MiniLineChart() {
 
 export default function DashboardMockup({ className }: DashboardMockupProps) {
   return (
-    <div className={cn('relative select-none', className)}>
+    <div className={cn('relative select-none', className)} style={{ perspective: '1200px' }}>
+      <div style={{ transform: 'rotateY(-4deg) rotateX(2deg)', transformStyle: 'preserve-3d' }}>
       {/* Glow ring behind the mockup */}
       <div
-        className="absolute -inset-4 rounded-3xl opacity-30 blur-2xl"
-        style={{ background: 'radial-gradient(ellipse at 60% 40%, #2563EB 0%, #06B6D4 50%, transparent 80%)' }}
+        className="absolute -inset-4 rounded-3xl opacity-50 blur-2xl"
+        style={{ background: 'radial-gradient(ellipse at 60% 40%, #2563EB 0%, #06B6D4 40%, #7C3AED 70%, transparent 90%)' }}
         aria-hidden="true"
       />
 
@@ -125,7 +126,7 @@ export default function DashboardMockup({ className }: DashboardMockupProps) {
             {/* KPI row */}
             <div className="grid grid-cols-3 gap-2">
               {KPI_CARDS.map((kpi) => (
-                <div key={kpi.label} className="flex flex-col rounded-xl bg-white p-2.5 shadow-sm">
+                <div key={kpi.label} className="flex flex-col rounded-xl backdrop-blur-xl bg-white/70 border border-white/20 p-2.5 shadow-sm">
                   <div className={cn('mb-1.5 inline-flex h-6 w-6 items-center justify-center rounded-md', kpi.bg)}>
                     <TrendingUp className={cn('h-3 w-3', kpi.color)} aria-hidden="true" />
                   </div>
@@ -169,12 +170,13 @@ export default function DashboardMockup({ className }: DashboardMockupProps) {
           </div>
         </div>
       </div>
+      </div>
 
       {/* Floating card — top right */}
       <motion.div
-        animate={{ y: [0, -10, 0] }}
-        transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute -right-6 -top-6 z-10 flex items-center gap-2.5 rounded-2xl border border-brand-border bg-white px-4 py-3 shadow-card-hover"
+        animate={{ y: [0, -8, 0] }}
+        transition={{ duration: 3.5, repeat: Infinity, ease: [0.45, 0, 0.55, 1] }}
+        className="absolute -right-6 -top-6 z-10 flex items-center gap-2.5 rounded-2xl backdrop-blur-md bg-white/80 border border-white/30 px-4 py-3 shadow-card-hover"
         aria-hidden="true"
       >
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100">
@@ -188,9 +190,9 @@ export default function DashboardMockup({ className }: DashboardMockupProps) {
 
       {/* Floating card — bottom left */}
       <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        className="absolute -bottom-6 -left-6 z-10 flex items-center gap-2.5 rounded-2xl border border-brand-border bg-white px-4 py-3 shadow-card-hover"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: [0.45, 0, 0.55, 1], delay: 1 }}
+        className="absolute -bottom-6 -left-6 z-10 flex items-center gap-2.5 rounded-2xl backdrop-blur-md bg-white/80 border border-white/30 px-4 py-3 shadow-card-hover"
         aria-hidden="true"
       >
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-violet-100">

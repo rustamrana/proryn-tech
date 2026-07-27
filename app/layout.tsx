@@ -4,6 +4,10 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import PageTransition from "@/components/common/PageTransition";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import ChatbotLoader from "@/components/chatbot/ChatbotLoader";
+import AnalyticsLoader from "@/components/providers/AnalyticsLoader";
+import { WebVitalsReporter } from "./web-vitals";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -119,10 +123,16 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${poppins.variable} antialiased bg-brand-background`}
       >
-        <Navbar />
-        <PageTransition />
-        <main id="main-content">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <AnalyticsLoader>
+            <WebVitalsReporter />
+            <Navbar />
+            <PageTransition />
+            <main id="main-content">{children}</main>
+            <Footer />
+            <ChatbotLoader />
+          </AnalyticsLoader>
+        </ThemeProvider>
       </body>
     </html>
   );

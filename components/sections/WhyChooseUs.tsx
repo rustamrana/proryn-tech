@@ -16,7 +16,7 @@ import SectionHeader from '@/components/common/SectionHeader';
 // ─── Differentiator data ──────────────────────────────────────────────────────
 
 interface Differentiator {
-  icon: React.ElementType;
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
   title: string;
   description: string;
 }

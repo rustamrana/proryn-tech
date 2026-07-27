@@ -10,7 +10,7 @@ import SectionHeader from '@/components/common/SectionHeader';
 interface StatItem {
   value: string;
   label: string;
-  icon: React.ElementType;
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
 }
 
 const stats: StatItem[] = [

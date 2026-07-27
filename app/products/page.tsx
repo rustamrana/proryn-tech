@@ -1,10 +1,24 @@
 'use client';
 
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Sparkles, Bell, ArrowRight, Check } from 'lucide-react';
 import { products } from '@/lib/data/products';
 import PageHero from '@/components/common/PageHero';
+
+const ProductDemo = dynamic(() => import('@/components/demo/ProductDemo'), {
+  ssr: false,
+  loading: () => (
+    <section className="bg-gradient-to-b from-slate-50 to-white py-20">
+      <div className="mx-auto max-w-7xl px-4 text-center">
+        <div className="mx-auto h-16 w-16 animate-pulse rounded-2xl bg-slate-200" />
+        <div className="mx-auto mt-6 h-8 w-64 animate-pulse rounded-lg bg-slate-200" />
+        <div className="mx-auto mt-3 h-4 w-96 animate-pulse rounded bg-slate-100" />
+      </div>
+    </section>
+  ),
+});
 
 const businessOS = products.find((p) => p.id === 'proryn-businessos')!;
 const comingSoon = products.filter((p) => p.comingSoon);
@@ -114,6 +128,9 @@ export default function ProductsPage() {
           </div>
         </div>
       </section>
+
+      {/* Interactive Demo */}
+      <ProductDemo />
 
       {/* Coming soon */}
       <section className="bg-brand-background py-20">

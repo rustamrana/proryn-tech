@@ -9,6 +9,7 @@ import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { NAV_LINKS } from '@/lib/constants';
 import MegaMenu from './MegaMenu';
 import { LogoWithText } from '@/components/common/Logo';
+import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import type { NavItem } from '@/types';
 
 // ─── All top-level routes to prefetch on mount ────────────────────────────────
@@ -209,6 +210,7 @@ export default function Navbar() {
               }`}>
               Explore Products
             </Link>
+            <ThemeToggle />
             <Link href="/contact" prefetch={true}
               className="rounded-lg bg-brand-secondary px-4 py-2 font-inter text-sm font-medium text-white transition-colors duration-150 hover:bg-blue-700">
               Book Free Consultation

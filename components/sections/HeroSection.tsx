@@ -1,9 +1,16 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, Shield, Zap, Globe2 } from 'lucide-react';
 import DashboardMockup from '@/components/common/DashboardMockup';
+
+// Load ParticleCanvas only on client (WebGL requires browser)
+const ParticleCanvas = dynamic(
+  () => import('@/components/effects/ParticleCanvas'),
+  { ssr: false }
+);
 
 function fadeUp(delay: number) {
   return {
@@ -25,19 +32,29 @@ const TRUST_PILLS = [
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#0A1628]" aria-label="Hero">
+      {/* 3D Particle Canvas — positioned behind all content */}
+      <div className="pointer-events-none absolute inset-0 z-[1]">
+        <ParticleCanvas
+          colorPrimary="#2563EB"
+          colorSecondary="#06B6D4"
+          interactive
+          className="h-full w-full"
+        />
+      </div>
+
       {/* Multi-layer background gradient */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true"
-        style={{ background: 'radial-gradient(ellipse 80% 50% at 20% -10%, rgba(37,99,235,0.25) 0%, transparent 60%), radial-gradient(ellipse 60% 60% at 85% 90%, rgba(6,182,212,0.12) 0%, transparent 60%)' }} />
+      <div className="pointer-events-none absolute inset-0 z-[2]" aria-hidden="true"
+        style={{ background: 'radial-gradient(ellipse 80% 50% at 20% -10%, rgba(37,99,235,0.15) 0%, transparent 60%), radial-gradient(ellipse 60% 60% at 85% 90%, rgba(6,182,212,0.08) 0%, transparent 60%)' }} />
 
       {/* Grid pattern overlay */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.03]" aria-hidden="true"
+      <div className="pointer-events-none absolute inset-0 animate-grid-pulse" aria-hidden="true"
         style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
       {/* Top glow blob */}
       <div className="pointer-events-none absolute -top-40 left-1/4 h-[500px] w-[500px] rounded-full bg-brand-secondary/15 blur-[100px]" aria-hidden="true" />
       <div className="pointer-events-none absolute -bottom-20 right-1/4 h-[400px] w-[400px] rounded-full bg-brand-accent/10 blur-[80px]" aria-hidden="true" />
 
-      <div className="relative mx-auto max-w-7xl px-4 pb-24 pt-28 sm:px-6 lg:px-8 lg:pt-32">
+      <div className="relative z-[10] mx-auto max-w-7xl px-4 pb-24 pt-28 sm:px-6 lg:px-8 lg:pt-32">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
 
           {/* ── Left: Copy ── */}
@@ -78,10 +95,20 @@ export default function HeroSection() {
               initial="hidden"
               animate="visible"
             >
-              PRORYN TECH helps startups, SMEs, enterprises, and government organizations build{' '}
-              <span className="text-white/90">secure, scalable, and intelligent</span> digital solutions
-              — from Enterprise Software and AI Automation to Cloud, Resource Augmentation,
-              and our flagship platform <span className="text-brand-accent font-medium">PRORYN BusinessOS</span>.
+              PRORYN is built on the principles of{' '}
+              <span className="text-brand-accent font-medium">Professional Engineering</span>,{' '}
+              <span className="text-brand-accent font-medium">Reliable Technology</span>, and{' '}
+              <span className="text-brand-accent font-medium">Next-Generation Innovation</span>.
+            </motion.p>
+
+            <motion.p
+              className="mt-3 max-w-lg font-inter text-base leading-relaxed text-white/60 sm:text-lg"
+              variants={fadeUp(0.25)}
+              initial="hidden"
+              animate="visible"
+            >
+              We create secure, scalable, and AI-powered software solutions that help businesses
+              transform, automate, and grow.
             </motion.p>
 
             {/* CTAs */}

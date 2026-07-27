@@ -7,6 +7,7 @@ import {
 import { services } from '@/lib/data/services';
 import FinalCTA from '@/components/sections/FinalCTA';
 import PageHero from '@/components/common/PageHero';
+import ServicesVideoHero from '@/components/sections/ServicesVideoHero';
 
 export const metadata: Metadata = {
   description:
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://proryntech.com/services' },
 };
 
-const ICON_MAP: Record<string, React.ElementType> = {
+const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   Building2, Globe, Smartphone, Brain, Workflow, Cloud, Users,
   HeadphonesIcon: Headphones, Lightbulb,
 };
@@ -46,6 +47,9 @@ export default function ServicesPage() {
           ))}
         </div>
       </PageHero>
+
+      {/* ── Video Background Demo Section ── */}
+      <ServicesVideoHero />
 
       {/* ── Service Detail Sections ── */}
       <div className="bg-white">

@@ -17,7 +17,7 @@ import SectionHeader from '@/components/common/SectionHeader';
 
 interface ProcessStep {
   step: number;
-  icon: React.ElementType;
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
   title: string;
   description: string;
 }
