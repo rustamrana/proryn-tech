@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!--
+    PRORYN TECH — Logo (Symbol Only)
+    Same geometry as brand-mark.svg master.
+  -->
+  <defs>
+    <linearGradient id="lm" x1="80" y1="40" x2="432" y2="472" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#0EA5E9"/>
+    </linearGradient>
+  </defs>
+  <path
+    d="M256 32 L432 120 L432 340 L256 480 L80 340 L80 120 Z
+       M180 160 L256 128 L332 160 L332 300 L256 340 L180 300 Z"
+    fill="url(#lm)"
+    fill-rule="evenodd"
+  />
+  <path
+    d="M220 200 L292 172 L332 220 L260 248 Z"
+    fill="#0EA5E9"
+  />
+</svg>

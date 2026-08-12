@@ -1,6 +1,12 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
+
+const ParticleCanvas = dynamic(
+  () => import('@/components/effects/ParticleCanvas'),
+  { ssr: false }
+);
 
 interface StatPill {
   value: string;
@@ -28,8 +34,18 @@ export default function PageHero({
 
   return (
     <section className="relative overflow-hidden bg-[#0A1628] pt-28 pb-16">
+      {/* 3D Particle Background */}
+      <div className="pointer-events-none absolute inset-0 z-[1]">
+        <ParticleCanvas
+          colorPrimary="#2563EB"
+          colorSecondary="#06B6D4"
+          interactive={false}
+          className="h-full w-full"
+        />
+      </div>
+
       {/* Multi-layer radial gradients */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true"
+      <div className="pointer-events-none absolute inset-0 z-[2]" aria-hidden="true"
         style={{
           background: `radial-gradient(ellipse 70% 55% at 15% -5%, rgba(37,99,235,0.22) 0%, transparent 55%),
                        radial-gradient(ellipse 55% 50% at 85% 100%, rgba(6,182,212,0.10) 0%, transparent 60%)`,
@@ -46,7 +62,7 @@ export default function PageHero({
       <div className="pointer-events-none absolute -left-40 -top-10 h-[420px] w-[420px] rounded-full bg-brand-secondary/12 blur-[120px]" aria-hidden="true" />
       <div className="pointer-events-none absolute -bottom-20 right-0 h-72 w-72 rounded-full bg-brand-accent/08 blur-[80px]" aria-hidden="true" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-[10] mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className={`grid grid-cols-1 items-center gap-10`}>
 
           {/* ── Text column ── */}

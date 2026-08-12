@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!--
+    PRORYN TECH — Master Brand Mark v2
+    
+    Concept: Convergence Shield
+    A hexagonal shield-inspired form with an internal negative-space channel
+    that suggests forward data flow and the abstract essence of "P".
+    
+    Construction:
+    - Outer form: angular shield shape (conveys reliability, enterprise trust)
+    - Internal channel: diagonal negative space cutting through (conveys
+      innovation, data flow, forward momentum)
+    - The upper-right opening suggests AI/cloud connectivity
+    
+    NOT parallelograms. NOT a literal P. NOT a cube. NOT dots.
+    Entirely new geometric construction.
+  -->
+  <defs>
+    <linearGradient id="pm" x1="80" y1="40" x2="432" y2="472" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#0EA5E9"/>
+    </linearGradient>
+  </defs>
+  <!-- Shield body with internal channel carved out -->
+  <path
+    d="M256 32 L432 120 L432 340 L256 480 L80 340 L80 120 Z
+       M180 160 L256 128 L332 160 L332 300 L256 340 L180 300 Z"
+    fill="url(#pm)"
+    fill-rule="evenodd"
+  />
+  <!-- Forward-flow accent bar (diagonal) -->
+  <path
+    d="M220 200 L292 172 L332 220 L260 248 Z"
+    fill="#0EA5E9"
+  />
+</svg>

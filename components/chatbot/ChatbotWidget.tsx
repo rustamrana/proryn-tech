@@ -264,7 +264,7 @@ export default function ChatbotWidget() {
               fixed z-50
               bottom-6 right-6
               max-sm:bottom-[18px] max-sm:right-[18px]
-              w-16 h-16 rounded-full
+              w-14 h-14 rounded-full
               bg-gradient-to-br from-[#2563EB] to-[#0EA5E9]
               text-white
               flex items-center justify-center

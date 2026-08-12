@@ -21,10 +21,10 @@ export interface ParticleCanvasProps {
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 
-const DESKTOP_PARTICLES = 800;
-const MOBILE_PARTICLES = 400;
+const DESKTOP_PARTICLES = 300;
+const MOBILE_PARTICLES = 150;
 const PARTICLE_SPREAD = 8;
-const PARTICLE_SIZE = 0.025;
+const PARTICLE_SIZE = 0.12;
 const CURSOR_INFLUENCE_RADIUS = 2.5;
 const CURSOR_STRENGTH = 0.4;
 
