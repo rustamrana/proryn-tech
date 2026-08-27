@@ -6,8 +6,6 @@ import Link from 'next/link';
 import {
   Lightbulb, ShieldCheck, Star, Users, HeartHandshake, Cpu,
   ArrowRight, Quote, Linkedin,
-  Code2, BrainCircuit, Building2, Layers,
-  TrendingUp, Briefcase,
 } from 'lucide-react';
 import PageHero from '@/components/common/PageHero';
 
@@ -37,28 +35,6 @@ const MILESTONES = [
 const CEO_EXPERTISE_TAGS = [
   'Business Strategy', 'Leadership', 'Digital Transformation', 'Enterprise Solutions',
   'AI Innovation', 'Corporate Management', 'Product Vision', 'Business Growth',
-];
-
-// CEO achievement cards
-const CEO_ACHIEVEMENTS = [
-  { icon: Briefcase, value: 'Director', label: '& CEO', sub: 'Business Leadership' },
-  { icon: TrendingUp, value: 'Growth', label: 'Innovation Driven', sub: 'Digital Transformation' },
-  { icon: BrainCircuit, value: 'AI First', label: 'Innovation Focus', sub: 'Digital Transformation' },
-  { icon: Layers, value: 'SaaS', label: 'Product Vision', sub: 'PRORYN BusinessOS' },
-];
-
-// CTO expertise tags
-const CTO_EXPERTISE_TAGS = [
-  'Enterprise Software', 'Java', 'Spring Boot', 'React', 'Cloud',
-  'Artificial Intelligence', 'Business Automation', 'SaaS', 'Government Solutions',
-];
-
-// CTO achievement cards
-const CTO_ACHIEVEMENTS = [
-  { icon: Code2, value: '9+', label: 'Years Experience', sub: 'Enterprise Engineering' },
-  { icon: Building2, value: 'Enterprise', label: 'Architect', sub: 'Scalable Systems' },
-  { icon: BrainCircuit, value: 'Govt.', label: 'Domain Expert', sub: 'Digital Transformation' },
-  { icon: Layers, value: 'AI &', label: 'Automation', sub: 'Intelligent Platforms' },
 ];
 
 // ─── Team Members ─────────────────────────────────────────────────────────────
