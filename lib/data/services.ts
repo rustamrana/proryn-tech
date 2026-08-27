@@ -4,6 +4,7 @@ export const services: Service[] = [
   {
     id: "enterprise-software-development",
     icon: "Building2",
+    image: "/images/service-software-studio.png",
     title: "Enterprise Software Development",
     description:
       "We architect and build robust enterprise-grade software solutions tailored to your organization's unique operational requirements. From ERP and CRM to HRMS and billing systems, our solutions are designed for scale, security, and long-term maintainability.",
@@ -99,6 +100,7 @@ export const services: Service[] = [
   {
     id: "resource-augmentation",
     icon: "Users",
+    image: "/images/service-talent-services.png",
     title: "Resource Augmentation",
     description:
       "We provide skilled, pre-vetted software engineers, QA specialists, DevOps engineers, and technology architects who integrate seamlessly into your existing development teams. Our augmented resources work as an extension of your organization, not as an outsourced vendor.",
@@ -133,6 +135,7 @@ export const services: Service[] = [
   {
     id: "technology-consulting",
     icon: "Lightbulb",
+    image: "/images/service-consulting.png",
     title: "Technology Consulting",
     description:
       "We provide strategic technology advisory services that help organizations make informed decisions about their digital investments, architectural choices, and technology roadmaps. Our consultants bring hands-on implementation experience, not just theoretical frameworks.",

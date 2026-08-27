@@ -1,7 +1,5 @@
 'use client';
 
-import VideoBackground from '@/components/effects/VideoBackground';
-
 /**
  * Demo section showcasing VideoBackground integration on the services page.
  *
@@ -30,19 +28,10 @@ import VideoBackground from '@/components/effects/VideoBackground';
 export default function ServicesVideoHero() {
   return (
     <section className="relative">
-      {/* VideoBackground with dark overlay for text readability.
-          Currently using poster-only mode since video files are not yet available.
-          Replace src with actual video path when files are added to /public/videos/ */}
-      <VideoBackground
-        src="/videos/services-hero.mp4"
-        webmSrc="/videos/services-hero.webm"
-        poster="/images/Rustam_Profile.jpg"
-        overlay={true}
-        overlayOpacity={0.6}
-        className="aspect-[21/9] min-h-[240px]"
-      />
+      {/* Dark gradient background — replace with VideoBackground once video files are added to /public/videos/ */}
+      <div className="aspect-[21/9] min-h-[240px] w-full bg-gradient-to-br from-slate-900 via-brand-primary to-slate-800" />
 
-      {/* Content overlay positioned on top of the video */}
+      {/* Content overlay positioned on top of the background */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="mx-auto max-w-4xl px-4 text-center">
           <span className="mb-3 inline-block rounded-full border border-white/20 bg-white/10 px-4 py-1.5 font-inter text-sm font-medium text-white/80 backdrop-blur-sm">

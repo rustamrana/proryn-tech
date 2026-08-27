@@ -7,6 +7,7 @@ export interface Service {
   description: string;
   features: string[];
   longDescription?: string;
+  image?: string; // optional image path under /public/
 }
 
 export interface Product {

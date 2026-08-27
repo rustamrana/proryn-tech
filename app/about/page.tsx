@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import {
   Lightbulb, ShieldCheck, Star, Users, HeartHandshake, Cpu,
-  ArrowRight, Quote, Linkedin, ExternalLink,
-  Code2, BrainCircuit, Cpu as CpuIcon, Building2, Layers,
+  ArrowRight, Quote, Linkedin,
+  Code2, BrainCircuit, Building2, Layers,
   TrendingUp, Briefcase,
 } from 'lucide-react';
 import PageHero from '@/components/common/PageHero';
@@ -191,61 +191,6 @@ function TeamMemberCard({ member, index }: { member: TeamMember; index: number }
   );
 }
 
-// ─── Founder Photo Placeholder ────────────────────────────────────────────────
-// Replace <img src="/founder.jpg" /> with the real photo — the frame stays the same.
-
-function FounderPhoto() {
-  return (
-    <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
-      {/* Background accent blobs */}
-      <div className="absolute -left-8 -top-8 h-48 w-48 rounded-full bg-brand-secondary/10 blur-3xl" aria-hidden="true" />
-      <div className="absolute -bottom-8 -right-8 h-48 w-48 rounded-full bg-brand-accent/10 blur-3xl" aria-hidden="true" />
-
-      {/* Gradient border frame */}
-      <div className="relative rounded-3xl bg-gradient-to-br from-brand-secondary via-brand-accent to-violet-500 p-[3px] shadow-[0_32px_80px_rgba(37,99,235,0.2)]">
-        <div className="relative overflow-hidden rounded-[22px] bg-brand-background">
-          {/* CEO Photo */}
-          <Image
-            src="/images/Preeti_Singh.jpg"
-            alt="Preeti Singh — Director & CEO, PRORYN TECH"
-            width={480}
-            height={560}
-            priority
-            className="h-[440px] w-full object-cover object-top lg:h-[520px]"
-          />
-        </div>
-      </div>
-
-      {/* Floating leadership badge */}
-      <motion.div
-        animate={{ y: [0, -6, 0] }}
-        transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute -right-4 top-8 rounded-2xl border border-brand-border bg-white px-4 py-3 shadow-card-hover"
-        aria-hidden="true"
-      >
-        <p className="font-poppins text-xl font-extrabold text-brand-primary leading-none">CEO</p>
-        <p className="font-inter text-[11px] text-slate-500">Director &amp;<br/>Chief Executive</p>
-      </motion.div>
-
-      {/* Floating company badge */}
-      <motion.div
-        animate={{ y: [0, 6, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        className="absolute -left-4 bottom-12 flex items-center gap-2.5 rounded-2xl border border-brand-border bg-white px-4 py-3 shadow-card-hover"
-        aria-hidden="true"
-      >
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-secondary">
-          <CpuIcon className="h-4 w-4 text-white" />
-        </div>
-        <div>
-          <p className="font-poppins text-[11px] font-bold text-brand-primary">PRORYN TECH</p>
-          <p className="font-inter text-[10px] text-slate-400">Director &amp; CEO</p>
-        </div>
-      </motion.div>
-    </div>
-  );
-}
-
 // ─── Page Component ───────────────────────────────────────────────────────────
 
 export default function AboutPage() {
@@ -334,269 +279,178 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          {/* Two-column layout — CEO */}
-          <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[2fr_3fr] lg:gap-16">
+          {/* Two Directors side-by-side */}
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14">
 
-            {/* Left 40% — CEO photo */}
+            {/* ── Director 1: Preeti Singh (CEO) ── */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}>
-              <FounderPhoto />
-            </motion.div>
+              initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col gap-6 rounded-3xl border border-brand-border bg-brand-background p-8 shadow-card hover:shadow-card-hover transition-shadow">
 
-            {/* Right 60% — CEO Bio + content */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-              className="flex flex-col gap-8">
-
-              {/* Name + role */}
-              <div>
-                <h3 className="font-poppins text-4xl font-extrabold text-brand-primary">Preeti Singh</h3>
-                <p className="mt-1.5 font-inter text-lg font-semibold text-brand-secondary">
-                  Director &amp; Chief Executive Officer (CEO)
-                </p>
-                <p className="mt-1 font-inter text-sm text-slate-400">PRORYN TECH · Bhopal, Madhya Pradesh, India</p>
+              {/* Photo */}
+              <div className="relative mx-auto w-full max-w-xs">
+                <div className="absolute -left-6 -top-6 h-36 w-36 rounded-full bg-brand-secondary/10 blur-3xl" aria-hidden="true" />
+                <div className="absolute -bottom-6 -right-6 h-36 w-36 rounded-full bg-brand-accent/10 blur-3xl" aria-hidden="true" />
+                <div className="relative rounded-2xl bg-gradient-to-br from-brand-secondary via-brand-accent to-violet-500 p-[3px] shadow-[0_20px_60px_rgba(37,99,235,0.18)]">
+                  <div className="relative overflow-hidden rounded-[14px] bg-brand-background">
+                    <Image
+                      src="/images/Preeti_Singh.jpg"
+                      alt="Preeti Singh — Director & CEO, PRORYN TECH"
+                      width={480}
+                      height={480}
+                      priority
+                      className="h-72 w-full object-cover object-top"
+                    />
+                  </div>
+                </div>
+                {/* Floating badge */}
+                <motion.div
+                  animate={{ y: [0, -5, 0] }}
+                  transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute -right-3 top-6 rounded-2xl border border-brand-border bg-white px-3 py-2 shadow-card-hover"
+                  aria-hidden="true"
+                >
+                  <p className="font-poppins text-base font-extrabold text-brand-primary leading-none">CEO</p>
+                  <p className="font-inter text-[10px] text-slate-500">Director</p>
+                </motion.div>
               </div>
 
-              {/* Leadership statement */}
-              <p className="font-inter text-[15px] font-medium leading-relaxed text-slate-500 italic">
-                Leading Business Strategy, Innovation, Digital Transformation, and Organizational Growth at PRORYN TECH.
-              </p>
+              {/* Bio */}
+              <div className="flex flex-col gap-4">
+                <div>
+                  <h3 className="font-poppins text-2xl font-extrabold text-brand-primary">Preeti Singh</h3>
+                  <p className="mt-1 font-inter text-base font-semibold text-brand-secondary">
+                    Director &amp; Chief Executive Officer (CEO)
+                  </p>
+                  <p className="mt-0.5 font-inter text-xs text-slate-400">PRORYN TECH · Bhopal, Madhya Pradesh, India</p>
+                </div>
 
-              {/* Bio paragraphs */}
-              <div className="space-y-4 font-inter text-[15px] leading-relaxed text-slate-600">
-                <p>
-                  Preeti Singh serves as the <strong className="text-brand-primary font-semibold">Director &amp; Chief Executive Officer</strong> of PRORYN TECH.
-                  She leads the company&apos;s strategic vision, business operations, innovation initiatives, and long-term growth.
-                  Under her leadership, PRORYN TECH is committed to delivering enterprise software, AI-powered solutions,
-                  cloud technologies, and digital transformation services that help organizations achieve operational excellence.
+                <p className="font-inter text-sm leading-relaxed text-slate-600">
+                  Preeti Singh serves as the <strong className="text-brand-primary font-semibold">Director &amp; CEO</strong> of PRORYN TECH,
+                  leading the company&apos;s strategic vision, business operations, innovation initiatives, and long-term growth.
+                  She is focused on building a customer-centric technology company delivering scalable software products,
+                  intelligent automation, and modern enterprise solutions worldwide.
                 </p>
-                <p>
-                  She is focused on building a customer-centric technology company that delivers scalable software products,
-                  intelligent automation, and modern enterprise solutions for businesses worldwide.
-                </p>
-              </div>
 
-              {/* Expertise tags */}
-              <div>
-                <p className="mb-3 font-inter text-xs font-bold uppercase tracking-widest text-slate-400">Expertise</p>
+                {/* Expertise tags */}
                 <div className="flex flex-wrap gap-2">
                   {CEO_EXPERTISE_TAGS.map((tag) => (
                     <span key={tag}
-                      className="rounded-full border border-brand-secondary/20 bg-brand-secondary/5 px-3.5 py-1.5 font-inter text-sm font-medium text-brand-secondary">
+                      className="rounded-full border border-brand-secondary/20 bg-brand-secondary/5 px-3 py-1 font-inter text-xs font-medium text-brand-secondary">
                       {tag}
                     </span>
                   ))}
                 </div>
-              </div>
 
-              {/* Achievement cards */}
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                {CEO_ACHIEVEMENTS.map(({ icon: Icon, value, label, sub }) => (
-                  <div key={label}
-                    className="rounded-2xl border border-brand-border bg-brand-background p-4 text-center shadow-card hover:shadow-card-hover transition-shadow">
-                    <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-secondary/10">
-                      <Icon className="h-5 w-5 text-brand-secondary" />
-                    </div>
-                    <p className="font-poppins text-lg font-extrabold text-brand-primary">{value}</p>
-                    <p className="font-inter text-[11px] font-semibold text-slate-700">{label}</p>
-                    <p className="font-inter text-[10px] text-slate-400">{sub}</p>
-                  </div>
-                ))}
-              </div>
+                {/* Quote */}
+                <div className="relative overflow-hidden rounded-xl border border-brand-secondary/20 bg-gradient-to-br from-brand-secondary/5 to-brand-accent/5 p-4">
+                  <Quote className="absolute right-3 top-3 h-6 w-6 text-brand-secondary/15" aria-hidden="true" />
+                  <blockquote className="relative font-inter text-sm italic leading-relaxed text-slate-700">
+                    &ldquo;Our mission is to build intelligent technology that empowers businesses to innovate, automate, and grow with confidence.&rdquo;
+                  </blockquote>
+                  <p className="mt-2 font-inter text-xs font-semibold text-brand-primary">— Preeti Singh</p>
+                </div>
 
-              {/* Quote */}
-              <div className="relative overflow-hidden rounded-2xl border border-brand-secondary/20 bg-gradient-to-br from-brand-secondary/5 to-brand-accent/5 p-6">
-                <Quote className="absolute right-4 top-4 h-8 w-8 text-brand-secondary/15" aria-hidden="true" />
-                <blockquote className="relative font-inter text-base italic leading-relaxed text-slate-700">
-                  &ldquo;Our mission is to build intelligent technology that empowers businesses to innovate, automate, and grow with confidence.&rdquo;
-                </blockquote>
-                <p className="mt-3 font-inter text-sm font-semibold text-brand-primary">— Preeti Singh</p>
-              </div>
-
-              {/* CTA buttons */}
-              <div className="flex flex-wrap gap-3">
+                {/* LinkedIn */}
                 <a
                   href="https://www.linkedin.com/in/preetiksingh"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#0A66C2] px-5 py-3 font-inter text-sm font-semibold text-white shadow-lg shadow-[#0A66C2]/20 transition-all hover:bg-[#004182] hover:shadow-xl">
+                  className="inline-flex w-fit items-center gap-2 rounded-xl bg-[#0A66C2] px-4 py-2.5 font-inter text-sm font-semibold text-white shadow-lg shadow-[#0A66C2]/20 transition-all hover:bg-[#004182] hover:shadow-xl">
                   <Linkedin className="h-4 w-4" />
                   Connect on LinkedIn
                 </a>
-                <Link href="/about"
-                  className="inline-flex items-center gap-2 rounded-xl border-2 border-brand-secondary px-5 py-3 font-inter text-sm font-semibold text-brand-secondary transition-all hover:bg-brand-secondary hover:text-white">
-                  <ExternalLink className="h-4 w-4" />
-                  View Company Profile
-                </Link>
               </div>
             </motion.div>
-          </div>
-        </div>
-      </section>
 
-      {/* ── TECHNOLOGY LEADERSHIP SECTION — CTO ── */}
-      <section id="technology-leadership" className="bg-brand-background py-14 overflow-hidden">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-          {/* Section label */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            transition={{ duration: 0.5 }} className="mb-10 text-center">
-            <span className="mb-3 inline-block rounded-full bg-brand-accent/10 px-4 py-1.5 font-inter text-sm font-semibold text-brand-accent">
-              Technology Leadership
-            </span>
-            <h2 className="font-poppins text-4xl font-extrabold text-brand-primary sm:text-5xl">Technology Leadership</h2>
-            <p className="mx-auto mt-4 max-w-2xl font-inter text-base leading-relaxed text-slate-600">
-              Engineering innovation through scalable architecture, modern software development, and AI-powered enterprise solutions.
-            </p>
-          </motion.div>
-
-          {/* Two-column layout — CTO (photo right) */}
-          <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[3fr_2fr] lg:gap-16">
-
-            {/* Left 60% — CTO Bio + content */}
+            {/* ── Director 2: Arif Khan (CEO) ── */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col gap-8">
+              initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+              className="flex flex-col gap-6 rounded-3xl border border-brand-border bg-brand-background p-8 shadow-card hover:shadow-card-hover transition-shadow">
 
-              {/* Name + role */}
-              <div>
-                <h3 className="font-poppins text-4xl font-extrabold text-brand-primary">Rustam Kumar</h3>
-                <p className="mt-1.5 font-inter text-lg font-semibold text-brand-secondary">
-                  Founder &amp; Chief Technology Officer (CTO)
-                </p>
-                <p className="mt-1 font-inter text-sm text-slate-400">PRORYN TECH · Bhopal, Madhya Pradesh, India</p>
+              {/* Photo */}
+              <div className="relative mx-auto w-full max-w-xs">
+                <div className="absolute -left-6 -top-6 h-36 w-36 rounded-full bg-brand-accent/10 blur-3xl" aria-hidden="true" />
+                <div className="absolute -bottom-6 -right-6 h-36 w-36 rounded-full bg-brand-secondary/10 blur-3xl" aria-hidden="true" />
+                <div className="relative rounded-2xl bg-gradient-to-br from-brand-accent via-brand-secondary to-violet-500 p-[3px] shadow-[0_20px_60px_rgba(37,99,235,0.18)]">
+                  <div className="relative overflow-hidden rounded-[14px] bg-brand-background">
+                    <Image
+                      src="/images/Arif_Khan.jpg"
+                      alt="Arif Khan — Director & CEO, PRORYN TECH"
+                      width={480}
+                      height={480}
+                      className="h-72 w-full object-cover object-top"
+                    />
+                  </div>
+                </div>
+                {/* Floating badge */}
+                <motion.div
+                  animate={{ y: [0, -5, 0] }}
+                  transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                  className="absolute -right-3 top-6 rounded-2xl border border-brand-border bg-white px-3 py-2 shadow-card-hover"
+                  aria-hidden="true"
+                >
+                  <p className="font-poppins text-base font-extrabold text-brand-primary leading-none">CEO</p>
+                  <p className="font-inter text-[10px] text-slate-500">Director</p>
+                </motion.div>
               </div>
 
-              {/* Bio paragraphs */}
-              <div className="space-y-4 font-inter text-[15px] leading-relaxed text-slate-600">
-                <p>
-                  Rustam Kumar is the <strong className="text-brand-primary font-semibold">Founder and Chief Technology Officer</strong> of PRORYN TECH
-                  with over <strong className="text-brand-primary font-semibold">9 years of experience</strong> in Enterprise Software Development,
-                  Government Digital Transformation, Java, Spring Boot, Cloud Technologies, REST APIs,
-                  Business Automation, and AI-powered enterprise platforms.
-                </p>
-                <p>
-                  He leads technology strategy, software architecture, engineering excellence, and product development,
-                  with a strong focus on building <strong className="text-brand-primary font-semibold">PRORYN BusinessOS</strong> and
-                  scalable enterprise software solutions.
-                </p>
-              </div>
+              {/* Bio */}
+              <div className="flex flex-col gap-4">
+                <div>
+                  <h3 className="font-poppins text-2xl font-extrabold text-brand-primary">Arif Khan</h3>
+                  <p className="mt-1 font-inter text-base font-semibold text-brand-secondary">
+                    Director &amp; Chief Executive Officer (CEO)
+                  </p>
+                  <p className="mt-0.5 font-inter text-xs text-slate-400">PRORYN TECH · Bhopal, Madhya Pradesh, India</p>
+                </div>
 
-              {/* Expertise tags */}
-              <div>
-                <p className="mb-3 font-inter text-xs font-bold uppercase tracking-widest text-slate-400">Expertise</p>
+                <p className="font-inter text-sm leading-relaxed text-slate-600">
+                  Arif Khan serves as <strong className="text-brand-primary font-semibold">Director &amp; CEO</strong> of PRORYN TECH,
+                  driving the company&apos;s strategic direction, business growth, and operational excellence.
+                  He brings strong leadership experience in enterprise technology, business development,
+                  and building high-performance organizations focused on delivering real value to clients.
+                </p>
+
+                {/* Expertise tags */}
                 <div className="flex flex-wrap gap-2">
-                  {CTO_EXPERTISE_TAGS.map((tag) => (
+                  {CEO_EXPERTISE_TAGS.map((tag) => (
                     <span key={tag}
-                      className="rounded-full border border-brand-secondary/20 bg-brand-secondary/5 px-3.5 py-1.5 font-inter text-sm font-medium text-brand-secondary">
+                      className="rounded-full border border-brand-secondary/20 bg-brand-secondary/5 px-3 py-1 font-inter text-xs font-medium text-brand-secondary">
                       {tag}
                     </span>
                   ))}
                 </div>
-              </div>
 
-              {/* Achievement cards */}
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                {CTO_ACHIEVEMENTS.map(({ icon: Icon, value, label, sub }) => (
-                  <div key={label}
-                    className="rounded-2xl border border-brand-border bg-white p-4 text-center shadow-card hover:shadow-card-hover transition-shadow">
-                    <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-secondary/10">
-                      <Icon className="h-5 w-5 text-brand-secondary" />
-                    </div>
-                    <p className="font-poppins text-lg font-extrabold text-brand-primary">{value}</p>
-                    <p className="font-inter text-[11px] font-semibold text-slate-700">{label}</p>
-                    <p className="font-inter text-[10px] text-slate-400">{sub}</p>
-                  </div>
-                ))}
-              </div>
+                {/* Quote */}
+                <div className="relative overflow-hidden rounded-xl border border-brand-secondary/20 bg-gradient-to-br from-brand-secondary/5 to-brand-accent/5 p-4">
+                  <Quote className="absolute right-3 top-3 h-6 w-6 text-brand-secondary/15" aria-hidden="true" />
+                  <blockquote className="relative font-inter text-sm italic leading-relaxed text-slate-700">
+                    &ldquo;Building a great company means building great teams and delivering exceptional value to every client we serve.&rdquo;
+                  </blockquote>
+                  <p className="mt-2 font-inter text-xs font-semibold text-brand-primary">— Arif Khan</p>
+                </div>
 
-              {/* Quote */}
-              <div className="relative overflow-hidden rounded-2xl border border-brand-secondary/20 bg-gradient-to-br from-brand-secondary/5 to-brand-accent/5 p-6">
-                <Quote className="absolute right-4 top-4 h-8 w-8 text-brand-secondary/15" aria-hidden="true" />
-                <blockquote className="relative font-inter text-base italic leading-relaxed text-slate-700">
-                  &ldquo;Technology should simplify business, not complicate it.&rdquo;
-                </blockquote>
-                <p className="mt-3 font-inter text-sm font-semibold text-brand-primary">— Rustam Kumar</p>
-              </div>
-
-              {/* CTA buttons */}
-              <div className="flex flex-wrap gap-3">
+                {/* LinkedIn */}
                 <a
-                  href="https://www.linkedin.com/in/rustamkumar"
+                  href="https://www.linkedin.com/in/arifkhan"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#0A66C2] px-5 py-3 font-inter text-sm font-semibold text-white shadow-lg shadow-[#0A66C2]/20 transition-all hover:bg-[#004182] hover:shadow-xl">
+                  className="inline-flex w-fit items-center gap-2 rounded-xl bg-[#0A66C2] px-4 py-2.5 font-inter text-sm font-semibold text-white shadow-lg shadow-[#0A66C2]/20 transition-all hover:bg-[#004182] hover:shadow-xl">
                   <Linkedin className="h-4 w-4" />
                   Connect on LinkedIn
                 </a>
-                <Link href="/products"
-                  className="inline-flex items-center gap-2 rounded-xl border-2 border-brand-secondary px-5 py-3 font-inter text-sm font-semibold text-brand-secondary transition-all hover:bg-brand-secondary hover:text-white">
-                  <ExternalLink className="h-4 w-4" />
-                  Explore PRORYN BusinessOS
-                </Link>
               </div>
             </motion.div>
 
-            {/* Right 40% — CTO photo placeholder */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}>
-              <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
-                {/* Background accent blobs */}
-                <div className="absolute -left-8 -top-8 h-48 w-48 rounded-full bg-brand-accent/10 blur-3xl" aria-hidden="true" />
-                <div className="absolute -bottom-8 -right-8 h-48 w-48 rounded-full bg-brand-secondary/10 blur-3xl" aria-hidden="true" />
-
-                {/* Gradient border frame */}
-                <div className="relative rounded-3xl bg-gradient-to-br from-brand-accent via-brand-secondary to-violet-500 p-[3px] shadow-[0_32px_80px_rgba(37,99,235,0.2)]">
-                  <div className="relative overflow-hidden rounded-[22px] bg-brand-background">
-                    <Image
-                      src="/images/Rustam_Profile.jpg"
-                      alt="Rustam Kumar — Founder & CTO, PRORYN TECH"
-                      width={480}
-                      height={560}
-                      className="h-[440px] w-full object-cover object-top lg:h-[520px]"
-                    />
-                  </div>
-                </div>
-
-                {/* Floating experience badge */}
-                <motion.div
-                  animate={{ y: [0, -6, 0] }}
-                  transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute -right-4 top-8 rounded-2xl border border-brand-border bg-white px-4 py-3 shadow-card-hover"
-                  aria-hidden="true"
-                >
-                  <p className="font-poppins text-xl font-extrabold text-brand-primary leading-none">9+</p>
-                  <p className="font-inter text-[11px] text-slate-500">Years in<br/>Enterprise Tech</p>
-                </motion.div>
-
-                {/* Floating company badge */}
-                <motion.div
-                  animate={{ y: [0, 6, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                  className="absolute -left-4 bottom-12 flex items-center gap-2.5 rounded-2xl border border-brand-border bg-white px-4 py-3 shadow-card-hover"
-                  aria-hidden="true"
-                >
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-secondary">
-                    <CpuIcon className="h-4 w-4 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-poppins text-[11px] font-bold text-brand-primary">PRORYN TECH</p>
-                    <p className="font-inter text-[10px] text-slate-400">Founder &amp; CTO</p>
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ── Our Team ── */}
-      <section className="bg-brand-background py-14">
+      {/* ── Our Team ── HIDDEN */}
+      {false && <section className="bg-brand-background py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
@@ -635,7 +489,7 @@ export default function AboutPage() {
             </Link>
           </motion.div>
         </div>
-      </section>
+      </section>}
 
       {/* ── Company Milestones ── */}
       <section className="bg-brand-background py-20">
@@ -673,7 +527,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
           <h2 className="font-poppins text-2xl font-bold text-brand-primary">Want to Build the Future With Us?</h2>
           <p className="mt-3 font-inter text-base text-slate-600">
-            Join Preeti, Rustam, and the growing PRORYN TECH team — engineers, designers, and technology leaders
+            Join Preeti, Arif, and the growing PRORYN TECH team — engineers, designers, and technology leaders
             who are passionate about building software that makes a real difference.
           </p>
           <Link href="/careers"

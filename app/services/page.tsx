@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   Building2, Globe, Smartphone, Brain, Workflow, Cloud, Users, Headphones, Lightbulb,
@@ -99,24 +100,36 @@ export default function ServicesPage() {
                     </Link>
                   </div>
 
-                  {/* Visual side — illustrated card */}
+                  {/* Visual side — image or illustrated card */}
                   <div className={!isEven ? 'lg:order-1' : ''}>
-                    <div className="rounded-2xl border border-brand-border bg-white p-8 shadow-card">
-                      <div className="flex h-48 items-center justify-center rounded-xl bg-gradient-to-br from-brand-secondary/5 to-brand-accent/5">
-                        <div className="text-center">
-                          <Icon className="mx-auto h-16 w-16 text-brand-secondary/30" />
-                          <p className="mt-3 font-poppins text-sm font-semibold text-slate-400">
-                            {service.title}
-                          </p>
+                    <div className="rounded-2xl border border-brand-border bg-white overflow-hidden shadow-card">
+                      {service.image ? (
+                        <Image
+                          src={service.image}
+                          alt={`${service.title} — PRORYN TECH`}
+                          width={600}
+                          height={480}
+                          className="w-full h-auto object-contain"
+                        />
+                      ) : (
+                        <div className="p-8">
+                          <div className="flex h-48 items-center justify-center rounded-xl bg-gradient-to-br from-brand-secondary/5 to-brand-accent/5">
+                            <div className="text-center">
+                              <Icon className="mx-auto h-16 w-16 text-brand-secondary/30" />
+                              <p className="mt-3 font-poppins text-sm font-semibold text-slate-400">
+                                {service.title}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="mt-6 flex flex-wrap gap-2">
+                            {service.features.map((feat) => (
+                              <span key={feat} className="rounded-full bg-slate-100 px-3 py-1 font-inter text-xs font-medium text-slate-700">
+                                {feat}
+                              </span>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                      <div className="mt-6 flex flex-wrap gap-2">
-                        {service.features.map((feat) => (
-                          <span key={feat} className="rounded-full bg-slate-100 px-3 py-1 font-inter text-xs font-medium text-slate-700">
-                            {feat}
-                          </span>
-                        ))}
-                      </div>
+                      )}
                     </div>
                   </div>
                 </div>
