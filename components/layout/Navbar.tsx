@@ -9,7 +9,6 @@ import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { NAV_LINKS } from '@/lib/constants';
 import MegaMenu from './MegaMenu';
 import { LogoWithText } from '@/components/common/Logo';
-import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import type { NavItem } from '@/types';
 
 // ─── All top-level routes to prefetch on mount ────────────────────────────────
