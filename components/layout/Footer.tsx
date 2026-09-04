@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { Linkedin, Github, Facebook, Instagram, Youtube, Twitter, Mail, MapPin, Globe, Phone } from 'lucide-react';
 import { COMPANY_NAME, TAGLINE, EMAIL, PHONE, WEBSITE, FULL_ADDRESS, SOCIAL_LINKS, COPYRIGHT } from '@/lib/constants';
@@ -89,14 +90,14 @@ export default function Footer() {
           <div>
             {/* Logo */}
             <Link href="/" aria-label={`${COMPANY_NAME} – homepage`}
-              className="mb-4 inline-flex flex-col items-start">
-              <span className="flex items-baseline gap-0 whitespace-nowrap">
-                <span className="font-inter leading-none" style={{ fontWeight: 800, fontSize: '1.5rem', color: '#FFFFFF', letterSpacing: '-0.03em' }}>PRORYN</span>
-                <span className="font-inter leading-none" style={{ fontWeight: 800, fontSize: '1.5rem', color: '#2563EB', letterSpacing: '-0.03em' }}>&nbsp;TECH</span>
-              </span>
-              <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontStyle: 'normal', fontSize: '11px', fontWeight: 500, letterSpacing: '0.06em', marginTop: '6px', color: '#94A3B8' }}>
-                Engineering Intelligent Solutions
-              </span>
+              className="mb-4 inline-flex items-center">
+              <Image
+                src="/images/white_logo.png"
+                alt="PRORYN TECH"
+                width={160}
+                height={44}
+                style={{ height: '44px', width: 'auto', display: 'block' }}
+              />
             </Link>
 
             <p className="font-inter text-sm leading-relaxed text-slate-400 max-w-[240px]">{TAGLINE}</p>

@@ -1,40 +1,28 @@
 /**
  * PRORYN TECH Logo Components
  *
- * Text-only branding for the header. No icon/image.
+ * Shows white_logo.png on transparent navbar (not scrolled)
+ * Shows logo_r.png on white navbar (scrolled)
  */
+
+import Image from 'next/image';
 
 interface LogoWithTextProps {
   scrolled: boolean;
 }
 
 export function LogoWithText({ scrolled }: LogoWithTextProps) {
-  const prorynColor = scrolled ? '#0F172A' : '#FFFFFF';
-
   return (
-    <span className="flex flex-col justify-center items-start shrink-0 whitespace-nowrap" style={{ maxWidth: '280px' }}>
-      {/* Company name */}
-      <span className="flex items-baseline gap-0">
-        <span
-          className="font-inter leading-none"
-          style={{ fontWeight: 800, fontSize: 'clamp(1.25rem, 2.2vw, 1.5rem)', color: prorynColor, letterSpacing: '-0.03em' }}
-        >
-          PRORYN
-        </span>
-        <span
-          className="font-inter leading-none"
-          style={{ fontWeight: 800, fontSize: 'clamp(1.25rem, 2.2vw, 1.5rem)', color: '#2563EB', letterSpacing: '-0.03em' }}
-        >
-          &nbsp;TECH
-        </span>
-      </span>
-      {/* Tagline — hidden on mobile */}
-      <span
-        className="hidden md:block"
-        style={{ fontFamily: 'var(--font-inter), sans-serif', fontStyle: 'normal', fontSize: '10px', fontWeight: 500, letterSpacing: '0.20em', marginTop: '4px', color: '#94A3B8', textTransform: 'uppercase' }}
-      >
-        Engineering Intelligent Solutions
-      </span>
+    <span className="inline-flex items-center shrink-0" style={{ height: '44px' }}>
+      <Image
+        src={scrolled ? '/images/logo_r.png' : '/images/white_logo.png'}
+        alt="PRORYN TECH"
+        width={160}
+        height={44}
+        priority
+        className="w-auto object-contain"
+        style={{ height: '44px', maxHeight: '44px', display: 'block' }}
+      />
     </span>
   );
 }

@@ -4,7 +4,7 @@ export const services: Service[] = [
   {
     id: "enterprise-software-development",
     icon: "Building2",
-    image: "/images/service-software-studio.png",
+    image: "/images/service-studio-services.png",
     title: "Enterprise Software Development",
     description:
       "We architect and build robust enterprise-grade software solutions tailored to your organization's unique operational requirements. From ERP and CRM to HRMS and billing systems, our solutions are designed for scale, security, and long-term maintainability.",
@@ -135,7 +135,7 @@ export const services: Service[] = [
   {
     id: "technology-consulting",
     icon: "Lightbulb",
-    image: "/images/service-consulting.png",
+    image: "/images/service-consulting-services.png",
     title: "Technology Consulting",
     description:
       "We provide strategic technology advisory services that help organizations make informed decisions about their digital investments, architectural choices, and technology roadmaps. Our consultants bring hands-on implementation experience, not just theoretical frameworks.",

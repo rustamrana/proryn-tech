@@ -58,7 +58,7 @@ function DesktopNavItem({ item, isActive, isScrolled }: DesktopNavItemProps) {
 
   return (
     <li
-      className="relative"
+      className="relative inline-flex items-center"
       onMouseEnter={hasMegaMenu ? openMenu : undefined}
       onMouseLeave={hasMegaMenu ? scheduleClose : undefined}
     >
@@ -66,7 +66,7 @@ function DesktopNavItem({ item, isActive, isScrolled }: DesktopNavItemProps) {
         href={item.href}
         prefetch={true}
         aria-current={isActive ? 'page' : undefined}
-        className={`inline-flex items-center gap-1 rounded-md px-3 py-2 font-inter text-sm font-medium transition-colors duration-150 ${linkColor}`}
+        className={`inline-flex items-center gap-1 rounded-md px-3 py-2 font-inter text-sm font-medium leading-none transition-colors duration-150 ${linkColor}`}
       >
         {item.label}
         {hasMegaMenu && (
@@ -192,7 +192,7 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <nav aria-label="Main navigation" className="hidden lg:flex lg:items-center">
-            <ul className="flex items-center gap-1">
+            <ul className="flex items-center gap-1 m-0 p-0 list-none">
               {NAV_LINKS.map((item) => (
                 <DesktopNavItem key={item.href} item={item}
                   isActive={pathname === item.href} isScrolled={isScrolled} />
@@ -203,16 +203,15 @@ export default function Navbar() {
           {/* Desktop CTAs */}
           <div className="hidden items-center gap-3 lg:flex">
             <Link href="/products" prefetch={true}
-              className={`rounded-lg border px-4 py-2 font-inter text-sm font-medium transition-colors duration-150 ${
+              className={`inline-flex items-center justify-center rounded-lg border px-4 py-2 font-inter text-sm font-medium leading-none transition-colors duration-150 ${
                 isScrolled
                   ? 'border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white'
                   : 'border-white/70 text-white hover:border-white hover:bg-white/10'
               }`}>
               Explore Products
             </Link>
-            <ThemeToggle />
             <Link href="/contact" prefetch={true}
-              className="rounded-lg bg-brand-secondary px-4 py-2 font-inter text-sm font-medium text-white transition-colors duration-150 hover:bg-blue-700">
+              className="inline-flex items-center justify-center rounded-lg bg-brand-secondary px-4 py-2 font-inter text-sm font-medium leading-none text-white transition-colors duration-150 hover:bg-blue-700">
               Book Free Consultation
             </Link>
           </div>

@@ -11,7 +11,7 @@ import SectionHeader from '@/components/common/SectionHeader';
 const VERTICALS = [
   {
     id: 'software-studio',
-    image: '/images/service-software-studio.png',
+    image: '/images/service-studio-services.png',
     badge: 'Product & Engineering',
     title: 'Software Studio',
     subtitle: 'We design, build, and deliver intelligent software solutions that drive business growth, automation, and innovation.',
@@ -56,7 +56,7 @@ const VERTICALS = [
   },
   {
     id: 'consulting-services',
-    image: '/images/service-consulting.png',
+    image: '/images/service-consulting-services.png',
     badge: 'Advisory & Digital Consulting',
     title: 'Consulting Services',
     subtitle: 'We help businesses transform, optimize, and scale with expert advisory, architecture, and consulting services.',
