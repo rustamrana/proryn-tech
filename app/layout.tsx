@@ -114,6 +114,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Preload both logo variants so the correct one is available on first paint */}
+        <link rel="preload" href="/images/white_logo.png" as="image" />
+        <link rel="preload" href="/images/logo_r.png" as="image" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
