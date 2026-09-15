@@ -13,7 +13,7 @@ import type { NavItem } from '@/types';
 
 // ─── All top-level routes to prefetch on mount ────────────────────────────────
 const ALL_ROUTES = [
-  '/', '/services', '/products', '/industries', '/technologies',
+  '/', '/services', '/products', '/applications', '/industries', '/technologies',
   '/about', '/careers', '/blogs', '/contact',
 ];
 

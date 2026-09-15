@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/lib/data/blog-posts";
+import { applications } from "@/lib/data/applications";
 
 const BASE_URL = "https://proryntech.com";
 
@@ -24,6 +25,12 @@ const staticRoutes: MetadataRoute.Sitemap = [
   },
   {
     url: `${BASE_URL}/products`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.9,
+  },
+  {
+    url: `${BASE_URL}/applications`,
     lastModified: new Date(),
     changeFrequency: "monthly",
     priority: 0.9,
@@ -68,5 +75,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  const applicationRoutes: MetadataRoute.Sitemap = applications.map((app) => ({
+    url: `${BASE_URL}/applications/${app.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...blogRoutes, ...applicationRoutes];
 }

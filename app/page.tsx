@@ -4,6 +4,7 @@ import TrustIndicators from '@/components/sections/TrustIndicators';
 import AboutSection from '@/components/sections/AboutSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import ProductsSection from '@/components/sections/ProductsSection';
+import ApplicationCenterPromo from '@/components/sections/ApplicationCenterPromo';
 import IndustriesSection from '@/components/sections/IndustriesSection';
 import WhyChooseUs from '@/components/sections/WhyChooseUs';
 import DevelopmentProcess from '@/components/sections/DevelopmentProcess';
@@ -40,6 +41,9 @@ export default function HomePage() {
 
       {/* 5. Products — BusinessOS featured + coming-soon grid */}
       <ProductsSection />
+
+      {/* 5b. Application Center — discovery entry point */}
+      <ApplicationCenterPromo />
 
       {/* 6. Industries — 10 industry cards */}
       <IndustriesSection />
