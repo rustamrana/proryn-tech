@@ -208,7 +208,7 @@ export default function ChatbotWidget() {
         role: "assistant",
         content:
           faqAnswer ||
-          "I appreciate your question! For detailed assistance on this topic, please reach out to our team directly:\n\n📧 info@proryntech.com\n📞 +91 90397 30924\n\nOr visit our Contact page — we typically respond within 24 hours.",
+          "I appreciate your question! For detailed assistance on this topic, please reach out to our team directly:\n\n📧 info@proryntech.com\n📞 +91 83491 14441\n\nOr visit our Contact page — we typically respond within 24 hours.",
         timestamp: new Date(),
       };
 

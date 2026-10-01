@@ -25,7 +25,7 @@ export const faqData: FAQEntry[] = [
   {
     keywords: ["contact", "reach", "email", "phone", "get in touch", "talk to"],
     answer:
-      "You can reach us at:\n📧 Email: info@proryntech.com\n📞 Phone: +91 90397 30924\n🌐 Website: proryntech.com/contact\n\nOur team typically responds within 24 hours on business days.",
+      "You can reach us at:\n📧 Email: info@proryntech.com\n📞 Phone: +91 83491 14441\n🌐 Website: proryntech.com/contact\n\nOur team typically responds within 24 hours on business days.",
   },
   {
     keywords: ["technology", "tech stack", "technologies", "tools", "framework", "language"],

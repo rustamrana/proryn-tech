@@ -13,7 +13,7 @@ export const EMAIL = {
 
 export const WEBSITE = "https://proryntech.com";
 
-export const PHONE = "+91 90397 30924";
+export const PHONE = "+91 83491 14441";
 
 export const ADDRESS = "Bhopal";
 
