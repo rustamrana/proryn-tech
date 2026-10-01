@@ -10,8 +10,12 @@ import { z } from "zod";
 
 export const MESSAGE_MAX_LENGTH = 5000;
 
-/** Accepts international phone formats: optional +, digits, spaces, (), - . */
-const MOBILE_REGEX = /^[+]?[\d\s().-]{7,20}$/;
+/**
+ * Indian mobile number: 10 digits starting with 6-9, with an optional
+ * +91 / 91 / 0 country/trunk prefix. Examples:
+ *   9876543210, 09876543210, 919876543210, +91 9876543210, +91-9876543210
+ */
+const MOBILE_REGEX = /^(?:\+91[\s-]?|91|0)?[6-9]\d{9}$/;
 
 export const contactSubmissionSchema = z.object({
   name: z
@@ -28,8 +32,8 @@ export const contactSubmissionSchema = z.object({
   mobile: z
     .string()
     .trim()
-    .max(30, "Mobile number is too long.")
-    .regex(MOBILE_REGEX, "Please enter a valid mobile number.")
+    .max(14, "Mobile number is too long.")
+    .regex(MOBILE_REGEX, "Enter a valid 10-digit Indian mobile number.")
     .optional()
     .or(z.literal("")),
   company: z

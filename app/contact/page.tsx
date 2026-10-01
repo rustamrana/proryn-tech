@@ -21,7 +21,10 @@ const contactSchema = z.object({
   phone:       z
     .string()
     .trim()
-    .regex(/^[+]?[\d\s().-]{7,20}$/, 'Please enter a valid phone number')
+    .regex(
+      /^(?:\+91[\s-]?|91|0)?[6-9]\d{9}$/,
+      'Enter a valid 10-digit Indian mobile number',
+    )
     .optional()
     .or(z.literal('')),
   service:     z.string().optional(),
@@ -132,7 +135,7 @@ function ContactForm() {
           <input id="email" type="email" {...register('email')} placeholder="you@company.com" className={inputCls(errors.email?.message)} />
         </Field>
         <Field id="phone" label="Phone Number" error={errors.phone?.message}>
-          <input id="phone" {...register('phone')} placeholder="+91 98765 43210" className={inputCls()} />
+          <input id="phone" type="tel" inputMode="tel" maxLength={14} {...register('phone')} placeholder="+91 98765 43210" className={inputCls(errors.phone?.message)} />
         </Field>
       </div>
 
