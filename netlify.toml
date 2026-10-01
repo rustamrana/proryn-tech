@@ -6,6 +6,25 @@
   NODE_VERSION = "20"
   PNPM_VERSION = "9"
   NEXT_TELEMETRY_DISABLED = "1"
+  # Required so pnpm runs Prisma's postinstall (generates the client) during the
+  # Netlify build. Without this, pnpm blocks lifecycle scripts and the client
+  # is missing at runtime.
+  PNPM_FLAGS = "--config.confirmModulesPurge=false"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Ensure Prisma's query engine binary (built for the Lambda runtime) is bundled
+# into the serverless functions that run the API routes. The globs cover both a
+# hoisted layout and pnpm's virtual store layout.
+[functions]
+  included_files = [
+    "node_modules/.prisma/client/*.node",
+    "node_modules/.pnpm/**/.prisma/client/*.node",
+    "node_modules/@prisma/client/**",
+    "prisma/schema.prisma"
+  ]
+
+# NOTE (go-live): set DATABASE_URL in the Netlify UI
+# (Site settings → Environment variables), pointing at a hosted/remote MySQL.
+# It must NOT be committed here and localhost is NOT reachable from production.

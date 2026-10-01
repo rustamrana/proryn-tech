@@ -1,0 +1,46 @@
+// Prisma schema for the PRORYN Web Portal.
+//
+// Datasource: MySQL. The connection string is read from the DATABASE_URL
+// environment variable — it is NEVER hardcoded and NEVER exposed to the
+// browser (no NEXT_PUBLIC_ prefix). It is only used server-side.
+//
+// Docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  // "native" covers local dev (e.g. Windows). The RHEL/OpenSSL 3.0 target is
+  // required for the AWS Lambda runtime that Netlify Functions run on, so the
+  // query engine binary is generated and bundled for production.
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/// Lifecycle status of a contact submission as it is handled by the team.
+enum ContactStatus {
+  NEW
+  READ
+  REPLIED
+  CLOSED
+}
+
+/// A message submitted through the public "Contact Us" form.
+model ContactSubmission {
+  id        BigInt        @id @default(autoincrement())
+  name      String        @db.VarChar(150)
+  email     String        @db.VarChar(255)
+  mobile    String?       @db.VarChar(30)
+  company   String?       @db.VarChar(150)
+  subject   String?       @db.VarChar(200)
+  message   String        @db.Text
+  status    ContactStatus @default(NEW)
+  createdAt DateTime      @default(now()) @map("created_at")
+  updatedAt DateTime      @updatedAt @map("updated_at")
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("contact_submissions")
+}

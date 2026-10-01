@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import {
   Mail, MapPin, Globe, Phone, CheckCircle2, Send, ArrowRight,
-  Linkedin, Twitter, Clock, MessageSquare, Headphones,
+  Linkedin, Twitter, Clock, MessageSquare, Headphones, AlertCircle,
 } from 'lucide-react';
 import { services } from '@/lib/data/services';
 import { EMAIL, WEBSITE, FULL_ADDRESS, PHONE, SOCIAL_LINKS } from '@/lib/constants';
@@ -18,7 +18,12 @@ const contactSchema = z.object({
   fullName:    z.string().min(2, 'Full name is required'),
   companyName: z.string().optional(),
   email:       z.string().email('Please enter a valid email address'),
-  phone:       z.string().optional(),
+  phone:       z
+    .string()
+    .trim()
+    .regex(/^[+]?[\d\s().-]{7,20}$/, 'Please enter a valid phone number')
+    .optional()
+    .or(z.literal('')),
   service:     z.string().optional(),
   message:     z.string().min(20, 'Please describe your project in at least 20 characters'),
 });
@@ -49,14 +54,48 @@ const inputCls = (err?: string) =>
 // ── Contact Form ─────────────────────────────────────────────────────────────
 function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<ContactFormData>({
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const onSubmit = async (_data: ContactFormData) => {
-    await new Promise((r) => setTimeout(r, 900));
-    setSubmitted(true);
+  const onSubmit = async (data: ContactFormData) => {
+    setSubmitError(null);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: data.fullName,
+          email: data.email,
+          mobile: data.phone,
+          company: data.companyName,
+          subject: data.service,
+          message: data.message,
+        }),
+      });
+
+      const result = (await res.json().catch(() => null)) as
+        | { success?: boolean; message?: string }
+        | null;
+
+      if (res.ok && result?.success) {
+        reset(); // Clear fields only after a successful submission.
+        setSubmitted(true);
+        return;
+      }
+
+      // Keep the user's entered data and show a friendly error.
+      setSubmitError(
+        result?.message ?? 'Unable to submit your message. Please try again later.',
+      );
+    } catch {
+      // Network failure — data is preserved.
+      setSubmitError(
+        'We could not reach the server. Please check your connection and try again.',
+      );
+    }
   };
 
   if (submitted) {
@@ -110,7 +149,14 @@ function ContactForm() {
           className={inputCls(errors.message?.message) + ' resize-none'} />
       </Field>
 
-      <button type="submit" disabled={isSubmitting}
+      {submitError && (
+        <div role="alert" className="flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3">
+          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" aria-hidden="true" />
+          <p className="font-inter text-sm text-red-600">{submitError}</p>
+        </div>
+      )}
+
+      <button type="submit" disabled={isSubmitting} aria-busy={isSubmitting}
         className="group flex w-full items-center justify-center gap-2 rounded-xl bg-brand-secondary py-4 font-inter text-base font-bold text-white shadow-lg shadow-brand-secondary/25 transition-all hover:bg-blue-700 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60">
         {isSubmitting ? (
           <><span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />Sending...</>
