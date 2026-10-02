@@ -16,6 +16,7 @@ const ALL_ROUTES = [
   '/', '/services', '/products', '/applications', '/industries', '/technologies',
   '/about', '/careers', '/blogs', '/contact',
 ];
+// Note: /blogs is reachable via the Resources menu and is already prefetched above.
 
 // ─── Animation variants ───────────────────────────────────────────────────────
 const mobileMenuVariants = {
@@ -201,13 +202,13 @@ export default function Navbar() {
 
           {/* Desktop CTAs */}
           <div className="hidden items-center gap-3 lg:flex">
-            <Link href="/products" prefetch={true}
+            <Link href="/blogs" prefetch={true}
               className={`inline-flex items-center justify-center rounded-lg border px-4 py-2 font-inter text-sm font-medium leading-none transition-colors duration-150 ${
                 isScrolled
                   ? 'border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white'
                   : 'border-white/70 text-white hover:border-white hover:bg-white/10'
               }`}>
-              Explore Products
+              Blogs
             </Link>
             <Link href="/contact" prefetch={true}
               className="inline-flex items-center justify-center rounded-lg bg-brand-secondary px-4 py-2 font-inter text-sm font-medium leading-none text-white transition-colors duration-150 hover:bg-blue-700">
@@ -261,9 +262,9 @@ export default function Navbar() {
             </nav>
 
             <div className="border-t border-brand-border px-4 py-5 space-y-2.5">
-              <Link href="/products" prefetch={true} onClick={closeMobile}
+              <Link href="/blogs" prefetch={true} onClick={closeMobile}
                 className="block w-full rounded-xl border-2 border-brand-secondary px-4 py-3 text-center font-inter text-sm font-semibold text-brand-secondary transition-colors duration-150 hover:bg-brand-secondary hover:text-white">
-                Explore Products
+                Blogs
               </Link>
               <Link href="/contact" prefetch={true} onClick={closeMobile}
                 className="block w-full rounded-xl bg-brand-secondary px-4 py-3 text-center font-inter text-sm font-semibold text-white shadow-lg shadow-brand-secondary/25 transition-colors duration-150 hover:bg-blue-700">

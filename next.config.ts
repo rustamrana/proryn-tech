@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
         hostname: 'ui-avatars.com',
         pathname: '/api/**',
       },
+      // Blog featured images are admin-provided URLs (URL-only policy).
+      // Allow any HTTPS host so pasted image URLs render via next/image.
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
     ],
   },
   // Performance: enable static page generation where possible

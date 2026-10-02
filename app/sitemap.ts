@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
-import { blogPosts } from "@/lib/data/blog-posts";
 import { applications } from "@/lib/data/applications";
+import { getPublishedBlogSlugs } from "@/lib/blog";
 
 const BASE_URL = "https://proryntech.com";
 
@@ -67,13 +67,21 @@ const staticRoutes: MetadataRoute.Sitemap = [
   },
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-    url: `${BASE_URL}/blogs/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // Only PUBLISHED blog posts are included. Falls back to static routes if the
+  // database is unreachable at build time so the sitemap never fails the build.
+  let blogRoutes: MetadataRoute.Sitemap = [];
+  try {
+    const published = await getPublishedBlogSlugs();
+    blogRoutes = published.map((post) => ({
+      url: `${BASE_URL}/blogs/${post.slug}`,
+      lastModified: post.updatedAt ?? post.publishedAt ?? new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    }));
+  } catch {
+    blogRoutes = [];
+  }
 
   const applicationRoutes: MetadataRoute.Sitemap = applications.map((app) => ({
     url: `${BASE_URL}/applications/${app.slug}`,

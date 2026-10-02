@@ -117,9 +117,13 @@ export const NAV_LINKS: NavItem[] = [
   },
   // { label: "Industries", href: "/industries" },
   // { label: "Technologies", href: "/technologies" },
+  {
+    label: "Resources",
+    href: "/blogs",
+    children: [{ label: "Blogs & Insights", href: "/blogs" }],
+  },
   { label: "About", href: "/about" },
   { label: "Careers", href: "/careers" },
-  // { label: "Blogs", href: "/blogs" },
   { label: "Contact", href: "/contact" },
 ];
 

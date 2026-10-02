@@ -27,6 +27,71 @@ enum ContactStatus {
   CLOSED
 }
 
+/// Publication lifecycle of a blog post.
+enum BlogStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+/// Role for a back-office user. Only ADMIN may manage blog content.
+enum AdminRole {
+  ADMIN
+  EDITOR
+}
+
+/// A blog / knowledge-base article.
+///
+/// Public pages only ever read rows where status = PUBLISHED. Draft and
+/// archived rows are never exposed to the public site.
+model BlogPost {
+  id             BigInt     @id @default(autoincrement())
+  title          String     @db.VarChar(255)
+  slug           String     @unique @db.VarChar(255)
+  excerpt        String     @db.Text
+  content        String     @db.LongText
+  featuredImage  String?    @map("featured_image") @db.VarChar(500)
+  category       String     @db.VarChar(100)
+  authorId       BigInt?    @map("author_id")
+  authorName     String     @map("author_name") @db.VarChar(150)
+  readingTime    Int        @default(5) @map("reading_time")
+  status         BlogStatus @default(DRAFT)
+  tags           String?    @db.Text // comma-separated tags; kept simple by design
+  seoTitle       String?    @map("seo_title") @db.VarChar(255)
+  seoDescription String?    @map("seo_description") @db.VarChar(500)
+  seoKeywords    String?    @map("seo_keywords") @db.VarChar(500)
+  viewCount      Int        @default(0) @map("view_count")
+  publishedAt    DateTime?  @map("published_at")
+  createdAt      DateTime   @default(now()) @map("created_at")
+  updatedAt      DateTime   @updatedAt @map("updated_at")
+
+  author AdminUser? @relation(fields: [authorId], references: [id], onDelete: SetNull)
+
+  @@index([status])
+  @@index([category])
+  @@index([publishedAt])
+  @@index([createdAt])
+  @@map("blog_posts")
+}
+
+/// Back-office user able to sign in to the admin area and manage content.
+/// This is the real, server-side authenticated identity (distinct from the
+/// client-side demo portal). Passwords are stored only as bcrypt hashes.
+model AdminUser {
+  id           BigInt     @id @default(autoincrement())
+  email        String     @unique @db.VarChar(255)
+  name         String     @db.VarChar(150)
+  passwordHash String     @map("password_hash") @db.VarChar(255)
+  role         AdminRole  @default(ADMIN)
+  isActive     Boolean    @default(true) @map("is_active")
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+
+  posts BlogPost[]
+
+  @@map("admin_users")
+}
+
 /// A message submitted through the public "Contact Us" form.
 model ContactSubmission {
   id        BigInt        @id @default(autoincrement())
